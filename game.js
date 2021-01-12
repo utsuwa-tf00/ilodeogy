@@ -4399,6 +4399,8 @@ var poseMap = function(){
 			if ( map[y][x] === 32 ) ctx.drawImage( w32, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			if ( map[y][x] === 33 ) ctx.drawImage( w33, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			if ( map[y][x] === 34 ) ctx.drawImage( w34, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
+			if ( map[y][x] === 35 ) ctx.drawImage( w35, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
+			if ( map[y][x] === 36 ) ctx.drawImage( w36, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 
 		}
 	}
