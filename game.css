@@ -4,3 +4,10 @@
 	display: block;
 }
 
+#container {
+  max-height: 1344;
+  margin: 0 auto;
+}
+#canvas {
+  height: 100%;
+}
