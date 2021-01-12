@@ -1,79 +1,5 @@
 // JavaScript Document
 
-var startX = null;
-var endX = null;
-var xMove = endX - startX;
-var startY = null;
-var endY = null;
-var yMove = endY - startY;
-
-
-function logSwipeStart(event) {
-	event.preventDefault();
-
-	startX = event.touches[0].pageX;
-	startY = event.touches[0].pageY;
-}
-
-function logSwipe(event) {
-	event.preventDefault();
-
-	endX = event.touches[0].pageX;
-	endY = event.touches[0].pageY;
-}
-
-function logSwipeEnd(event) {
-	event.preventDefault();
-
-	if( 0 < (endX - startX) ) {
-		if( 0 < (Math.abs(xMove)-Math.abs(yMove))){
-			key.right =true;
-			key.drawimage =true;
-			pc.draw ='right';
-			randmove.keypush = true;
-			key.right =false;
-			key.drawimage =false;
-			randmove.keypush = false;
-		}
-	} 
-	if( 0 > (endX - startX) ){
-		if( 0 < (Math.abs(xMove)-Math.abs(yMove))){
-			key.left =true;
-			key.drawimage =true;
-			pc.draw ='left';
-			randmove.keypush = true;
-			key.left =false;
-			key.drawimage =false;
-			randmove.keypush = false;
-		}
-	}
-	if( 0 < (endY - startY) ) {
-		if( 0 < (Math.abs(yMove)-Math.abs(xMove))){
-			key.dowwn =true;
-			key.drawimage =true;
-			pc.draw ='down';
-			randmove.keypush = true;
-			key.dowwn =false;
-			key.drawimage =false;
-			randmove.keypush = false;
-		}
-	} 
-	if( 0 > (endY - startY) ){
-		if( 0 < (Math.abs(yMove)-Math.abs(xMove))){
-			key.up =true;
-			key.drawimage =true;
-			pc.draw ='up';
-			randmove.keypush = true;
-			key.up =false;
-			key.drawimage =false;
-			randmove.keypush = false;
-		}
-	}
-}
-
-
-
-
 // スクロール関連メソッド
 var  scroll_control = function(event) {
     event.preventDefault();
@@ -5560,15 +5486,6 @@ switch( idx ){
 		titleDraw();
 		addEventListener("keydown", botanosu );
 		addEventListener("keyup", botanhanasu );
-		addEventListener('load', function(){
-	// スワイプ／フリック
-	document.getElementById("touch").addEventListener('touchmove', logSwipe);
-	// タッチ開始
-	document.getElementById("touch").addEventListener('touchstart', logSwipeStart);
-	// タッチ終了
-	document.getElementById("touch").addEventListener('touchend', logSwipeEnd);
-});
-
 		ppcMove();
 		gamestart();
 	break;
@@ -5595,15 +5512,6 @@ switch( idx ){
 
 			addEventListener("keydown", botanosu );
 			addEventListener("keyup", botanhanasu );
-			addEventListener('load', function(){
-	// スワイプ／フリック
-	document.getElementById("touch").addEventListener('touchmove', logSwipe);
-	// タッチ開始
-	document.getElementById("touch").addEventListener('touchstart', logSwipeStart);
-	// タッチ終了
-	document.getElementById("touch").addEventListener('touchend', logSwipeEnd);
-});
-
 
 			//プレイヤーキャラクターの動作
 			pcMove();
@@ -5651,15 +5559,6 @@ switch( idx ){
 		AmIMeDraw();
 		addEventListener("keydown", botanosu );
 		addEventListener("keyup", botanhanasu );
-		addEventListener('load', function(){
-	// スワイプ／フリック
-	document.getElementById("touch").addEventListener('touchmove', logSwipe);
-	// タッチ開始
-	document.getElementById("touch").addEventListener('touchstart', logSwipeStart);
-	// タッチ終了
-	document.getElementById("touch").addEventListener('touchend', logSwipeEnd);
-});
-
 		amimeDraw();
 		amimeMove();
 		clear();
@@ -5675,15 +5574,6 @@ switch( idx ){
 		titleDraw();
 		addEventListener("keydown", botanosu );
 		addEventListener("keyup", botanhanasu );
-		addEventListener('load', function(){
-	// スワイプ／フリック
-	document.getElementById("touch").addEventListener('touchmove', logSwipe);
-	// タッチ開始
-	document.getElementById("touch").addEventListener('touchstart', logSwipeStart);
-	// タッチ終了
-	document.getElementById("touch").addEventListener('touchend', logSwipeEnd);
-});
-
 		ppcssMove();
 		ssStart();
 		
@@ -5808,5 +5698,6 @@ if(key_code===37) randmove.keypush = false;
 
 
 }
+
 
 
