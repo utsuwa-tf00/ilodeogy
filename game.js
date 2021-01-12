@@ -34,7 +34,7 @@ var ctx = canvas.getContext('2d');
 //キャンバスの更新
 var gamecanvasUpdate = function(){
 	document.body.style.backgroundColor = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
-	ctx.fillRect ( 0,0,1344,896);
+	ctx.fillRect ( 0,0,1344,960);
 	ctx.fillStyle = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
 
 }
@@ -42,14 +42,14 @@ var gamecanvasUpdate = function(){
 var canvasUpdate = function(){
 	if(EXclear===false){
 		document.body.style.backgroundColor = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
-		ctx.fillRect ( 0,0,1344,896);
+		ctx.fillRect ( 0,0,1344,960);
 		ctx.fillStyle = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
 
 	}
 	
 	if(EXclear===true){
 		document.body.style.backgroundColor = "rgb(255,255,255)";
-		ctx.fillRect ( 0,0,1344,896);
+		ctx.fillRect ( 0,0,1344,960);
 		ctx.fillStyle = "rgb(255,255,255)";
 	}
 
@@ -917,13 +917,13 @@ var Rkeypush = new Object();
 Rkeypush.img = new Image();
 Rkeypush.img.src = 'game-object/Rkey.PNG';
 Rkeypush.x = 128;
-Rkeypush.y = 576;
+Rkeypush.y = 640;
 
 var TABkeypush = new Object();
 TABkeypush.img = new Image();
 TABkeypush.img.src = 'game-object/TABkey.PNG';
 TABkeypush.x = 128;
-TABkeypush.y = 704;
+TABkeypush.y = 768;
 
 
 
@@ -4245,66 +4245,66 @@ var infoUpdate = function(){
 	ctx.drawImage( TABkeypush.img, TABkeypush.x, TABkeypush.y );
 	
 	if(stage.rcount ===0){
-		map[9][17] =0;
-		map[9][18] =0;
-		map[9][19] =0;
-	}
-	if(stage.rcount ===1){
-		map[9][17] =4;
-		map[9][18] =0;
-		map[9][19] =0;
-	}
-	if(stage.rcount ===2){
-		map[9][17] =4;
-		map[9][18] =4;
-		map[9][19] =0;
-	}
-	if(stage.rcount ===3){
-		map[9][17] =4;
-		map[9][18] =4;
-		map[9][19] =4;
-	}
-	
-	if(stage.gcount ===0){
 		map[10][17] =0;
 		map[10][18] =0;
 		map[10][19] =0;
 	}
-	if(stage.gcount ===1){
-		map[10][17] =5;
+	if(stage.rcount ===1){
+		map[10][17] =4;
 		map[10][18] =0;
 		map[10][19] =0;
 	}
-	if(stage.gcount ===2){
-		map[10][17] =5;
-		map[10][18] =5;
+	if(stage.rcount ===2){
+		map[10][17] =4;
+		map[10][18] =4;
 		map[10][19] =0;
 	}
-	if(stage.gcount ===3){
-		map[10][17] =5;
-		map[10][18] =5;
-		map[10][19] =5;
+	if(stage.rcount ===3){
+		map[10][17] =4;
+		map[10][18] =4;
+		map[10][19] =4;
 	}
 	
-	if(stage.bcount ===0){
+	if(stage.gcount ===0){
 		map[11][17] =0;
 		map[11][18] =0;
 		map[11][19] =0;
 	}
-	if(stage.bcount ===1){
-		map[11][17] =6;
+	if(stage.gcount ===1){
+		map[11][17] =5;
 		map[11][18] =0;
 		map[11][19] =0;
 	}
-	if(stage.bcount ===2){
-		map[11][17] =6;
-		map[11][18] =6;
+	if(stage.gcount ===2){
+		map[11][17] =5;
+		map[11][18] =5;
 		map[11][19] =0;
 	}
+	if(stage.gcount ===3){
+		map[11][17] =5;
+		map[11][18] =5;
+		map[11][19] =5;
+	}
+	
+	if(stage.bcount ===0){
+		map[12][17] =0;
+		map[12][18] =0;
+		map[12][19] =0;
+	}
+	if(stage.bcount ===1){
+		map[12][17] =6;
+		map[12][18] =0;
+		map[12][19] =0;
+	}
+	if(stage.bcount ===2){
+		map[12][17] =6;
+		map[12][18] =6;
+		map[12][19] =0;
+	}
 	if(stage.bcount ===3){
-		map[11][17] =6;
-		map[11][18] =6;
-		map[11][19] =6;
+		map[12][17] =6;
+		map[12][18] =6;
+		map[12][19] =6;
 	}
 }
 
@@ -4313,15 +4313,15 @@ var infoint = function(){
 	stage.rcount = 0;
 	stage.gcount = 0;
 	stage.bcount = 0;
-	map[9][17] =0;
-	map[9][18] =0;
-	map[9][19] =0;
 	map[10][17] =0;
 	map[10][18] =0;
 	map[10][19] =0;
 	map[11][17] =0;
 	map[11][18] =0;
 	map[11][19] =0;
+	map[12][17] =0;
+	map[12][18] =0;
+	map[12][19] =0;
 }
 
 
@@ -4345,13 +4345,13 @@ var psTABpush = new Object();
 psTABpush.img = new Image();
 psTABpush.img.src = 'game-object/psTABkey.PNG';
 psTABpush.x = 128;
-psTABpush.y = 704;
+psTABpush.y = 768;
 
 var ESCpush = new Object();
 ESCpush.img = new Image();
 ESCpush.img.src = 'game-object/ESCkey.PNG';
 ESCpush.x = 128;
-ESCpush.y = 448;
+ESCpush.y = 512;
 
 
 var pmap = [
