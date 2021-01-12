@@ -333,7 +333,7 @@ var ppcMove = function(){
 				Arrow = false;
 				var ppxd = ppc.x/64;
 				var ppyd = ppc.y/64;
-				if ( ppyd < 13 ) {
+				if ( ppyd < 14 ) {
 					ppyd++;
 					if ( titlemap[ppyd][ppxd] === 0 ) {
 						ppc.move = 64;
@@ -632,6 +632,11 @@ var ppcssMove = function(){
 						ppc.move = 64;
 						key.push = 'up';
 					}
+					if ( ssmap[ssyu][ssxu] === 10 ) {
+						ppc.move = 64;
+						key.push = 'up';
+					}
+					
 				}
 			}
 
@@ -642,7 +647,7 @@ var ppcssMove = function(){
 				Arrow = false;
 				var ssxd = ppc.x/64;
 				var ssyd = ppc.y/64;
-				if ( ssyd < 13 ) {
+				if ( ssyd < 14 ) {
 					if ( ssmap[ssyd][ssxd] === 0 ) {
 						ppc.move = 64;
 						key.push = 'down';
@@ -683,6 +688,10 @@ var ppcssMove = function(){
 						ppc.move = 64;
 						key.push = 'down';
 					}
+					if ( ssmap[ssyd][ssxd] === 10 ) {
+						ppc.move = 64;
+						key.push = 'down';
+					}
 
 				}
 			}
@@ -695,7 +704,7 @@ var ppcssMove = function(){
 				var ssxr = ppc.x/64;
 				var ssyr = ppc.y/64;				
 				if(ssxr < 20){
-					ssxr--;
+					ssxr++;
 				if ( ssmap[ssyr][ssxr] === 0 ) {
 					ppc.move = 64;
 					key.push = 'right';
@@ -733,6 +742,10 @@ var ppcssMove = function(){
 					key.push = 'right';
 				}
 				if ( ssmap[ssyr][ssxr] === 9 ) {
+					ppc.move = 64;
+					key.push = 'right';
+				}
+				if ( ssmap[ssyr][ssxr] === 10 ) {
 					ppc.move = 64;
 					key.push = 'right';
 				}
@@ -785,6 +798,10 @@ var ppcssMove = function(){
 					key.push = 'left';
 				}
 				if ( ssmap[ssyl][ssxl] === 9 ) {
+					ppc.move = 64;
+					key.push = 'left';
+				}
+				if ( ssmap[ssyl][ssxl] === 10 ) {
 					ppc.move = 64;
 					key.push = 'left';
 				}
@@ -940,7 +957,7 @@ pc.imgr.src = 'game-object/pcr.PNG';
 pc.imgl = new Image();
 pc.imgl.src = 'game-object/pcl.PNG';
 pc.x = 640;
-pc.y = 768;
+pc.y = 832;
 pc.move = 0;
 pc.draw = '';
 
@@ -961,7 +978,7 @@ iammeW.imgl.src = 'game-object/iammeWl.PNG';
 var pcint = function(){
 	pc.move = 0;
 	pc.x = 640;
-	pc.y = 768;
+	pc.y = 832;
 }
 
 
@@ -1271,6 +1288,10 @@ var w35 = new Image();
 w35.src = 'game-object/35.PNG';
 var w36 = new Image();
 w36.src = 'game-object/36.PNG';
+var w37 = new Image();
+w37.src = 'game-object/37.PNG';
+var w38 = new Image();
+w38.src = 'game-object/38.PNG';
 
 
 
@@ -1424,8 +1445,8 @@ var map = [
 	[0,0,0,0,0,26,0,26,0,0,0,0,0,26,0,26,0,0,0,0,0],
 	[0,0,0,0,0,26,0,24,25,19,0,17,25,23,0,26,0,0,0,0,0],
 	[0,0,0,0,0,26,0,0,0,0,0,0,0,0,0,26,0,0,0,0,0],
-	[0,0,0,0,0,35,16,16,16,16,16,16,16,16,16,36,0,0,0,0,0],
-	[0,0,0,0,0,14,15,15,15,15,15,15,15,15,15,13,0,0,0,0,0]
+	[0,0,0,0,0,35,16,16,16,12,99,11,16,16,16,36,0,0,0,0,0],
+	[0,0,0,0,0,14,15,15,15,38,25,37,15,15,15,13,0,0,0,0,0]
 ];
 
 
@@ -1487,6 +1508,8 @@ var gameMap = function(){
 			if ( map[y][x] === 34 ) ctx.drawImage( w34, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			if ( map[y][x] === 35 ) ctx.drawImage( w35, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			if ( map[y][x] === 36 ) ctx.drawImage( w36, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
+			if ( map[y][x] === 37 ) ctx.drawImage( w37, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
+			if ( map[y][x] === 38 ) ctx.drawImage( w38, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			
 		}
 	}
@@ -3166,6 +3189,10 @@ var pcMove = function(){
 						pc.move = 64;
 						key.push = 'up';
 					}
+					if ( map[pyu][pxu] === 99 ) {
+						pc.move = 64;
+						key.push = 'up';
+					}
 				}
 			}
 
@@ -3173,7 +3200,7 @@ var pcMove = function(){
 			if( key.down === true){
 				var pxd = pc.x/64;
 				var pyd = pc.y/64;
-				if ( pyd < 13 ) {
+				if ( pyd < 14 ) {
 					pyd++;
 					if ( map[pyd][pxd] === 0 ) {
 						pc.move = 64;
@@ -3188,6 +3215,10 @@ var pcMove = function(){
 						key.push = 'down';
 					}
 					if ( map[pyd][pxd] === 3 ) {
+						pc.move = 64;
+						key.push = 'down';
+					}
+					if ( map[pyd][pxd] === 99 ) {
 						pc.move = 64;
 						key.push = 'down';
 					}
@@ -3216,6 +3247,10 @@ var pcMove = function(){
 					pc.move = 64;
 					key.push = 'right';
 				}
+				if ( map[pyr][pxr] === 99 ) {
+				pc.move = 64;
+				key.push = 'right';
+			}
 				}
 			}
 
@@ -3238,6 +3273,10 @@ var pcMove = function(){
 					key.push = 'left';
 				}
 				if ( map[pyl][pxl] === 3 ) {
+					pc.move = 64;
+					key.push = 'left';
+				}
+				if ( map[pyl][pxl] === 99 ) {
 					pc.move = 64;
 					key.push = 'left';
 				}
@@ -3533,7 +3572,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push1 === 1){
-				if ( y1 < 13 ) {
+				if ( y1 < 14 ) {
 					y1++;
 					if ( map[y1][x1] === 0 ) {
 						ec1.move = 64;
@@ -3592,7 +3631,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push2 === 1){
-				if ( y2 < 13 ) {
+				if ( y2 < 14 ) {
 					y2++;
 					if ( map[y2][x2] === 0 ) {
 						ec2.move = 64;
@@ -3651,7 +3690,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push3 === 1){
-				if ( y3 < 13 ) {
+				if ( y3 < 14 ) {
 					y3++;
 					if ( map[y3][x3] === 0 ) {
 						ec3.move = 64;
@@ -3710,7 +3749,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push4 === 1){
-				if ( y4 < 13 ) {
+				if ( y4 < 14 ) {
 					y4++;
 					if ( map[y4][x4] === 0 ) {
 						ec4.move = 64;
@@ -3769,7 +3808,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push5 === 1){
-				if ( y5 < 13 ) {
+				if ( y5 < 14 ) {
 					y5++;
 					if ( map[y5][x5] === 0 ) {
 						ec5.move = 64;
@@ -3828,7 +3867,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push6 === 1){
-				if ( y6 < 13 ) {
+				if ( y6 < 14 ) {
 					y6++;
 					if ( map[y6][x6] === 0 ) {
 						ec6.move = 64;
@@ -3887,7 +3926,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push7 === 1){
-				if ( y7 < 13 ) {
+				if ( y7 < 14 ) {
 					y7++;
 					if ( map[y7][x7] === 0 ) {
 						ec7.move = 64;
@@ -3946,7 +3985,7 @@ var ecMove = function(){
 			
 			//下
 			if ( randmove.push8 === 1){
-				if ( y8 < 13 ) {
+				if ( y8 < 14 ) {
 					y8++;
 					if ( map[y8][x8] === 0 ) {
 						ec8.move = 64;
@@ -3994,7 +4033,7 @@ var ecMove = function(){
 
 			//上
 			if ( randmove.push9 === 0){
-				if ( y9 > 13) {
+				if ( y9 > 0) {
 					y9--;
 					if ( map[y9][x9] === 0 ) {
 						ec9.move = 64;
@@ -4368,8 +4407,8 @@ var pmap = [
 	[0,0,0,0,0,26,0,26,0,0,0,0,0,26,0,26,0,0,0,0,0],
 	[0,0,0,0,0,26,0,24,25,19,0,17,25,23,0,26,0,0,0,0,0],
 	[0,0,0,0,0,26,0,0,0,0,0,0,0,0,0,26,0,0,0,0,0],
-	[0,0,0,0,0,35,16,16,16,16,16,16,16,16,16,36,0,0,0,0,0],
-	[0,0,0,0,0,14,15,15,15,15,15,15,15,15,15,13,0,0,0,0,0]
+	[0,0,0,0,0,35,16,16,16,12,99,11,16,16,16,36,0,0,0,0,0],
+	[0,0,0,0,0,14,15,15,15,38,25,37,15,15,15,13,0,0,0,0,0]
 ];
 
 var poseMap = function(){
@@ -4401,6 +4440,8 @@ var poseMap = function(){
 			if ( map[y][x] === 34 ) ctx.drawImage( w34, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			if ( map[y][x] === 35 ) ctx.drawImage( w35, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			if ( map[y][x] === 36 ) ctx.drawImage( w36, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
+			if ( map[y][x] === 37 ) ctx.drawImage( w37, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
+			if ( map[y][x] === 38 ) ctx.drawImage( w38, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 
 		}
 	}
@@ -4448,7 +4489,7 @@ amime.imgr.src = 'game-object/amimer.PNG';
 amime.imgl = new Image();
 amime.imgl.src = 'game-object/amimel.PNG';
 amime.x = 640;
-amime.y = 576;
+amime.y = 640;
 amime.move = 0;
 
 var retry = new Image();
@@ -4473,8 +4514,8 @@ var cmap = [
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -4559,7 +4600,7 @@ var amimeMove = function(){
 			if( key.down === true){
 				var cpxd = amime.x/64;
 				var cpyd = amime.y/64;
-				if ( cpyd < 13 ) {
+				if ( cpyd < 10 ) {
 					cpyd++;
 					if ( cmap[cpyd][cpxd] === 0 ) {
 						amime.move = 64;
@@ -4690,7 +4731,7 @@ var EXmap = [
 	[0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0],
 	[0,0,0,0,0,1,0,1,1,1,0,1,1,1,0,1,0,0,0,0,0],
 	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
-	[0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0],
+	[0,0,0,0,0,1,1,1,1,1,99,1,1,1,1,1,0,0,0,0,0],
 	[0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0]
 ];
 
@@ -4731,7 +4772,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push1 === 1){
-				if ( y1 < 13 ) {
+				if ( y1 < 14 ) {
 					y1++;
 					if ( EXmap[y1][x1] === 0 ) {
 						ec1.move = 64;
@@ -4790,7 +4831,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push2 === 1){
-				if ( y2 < 13 ) {
+				if ( y2 < 14 ) {
 					y2++;
 					if ( EXmap[y2][x2] === 0 ) {
 						ec2.move = 64;
@@ -4849,7 +4890,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push3 === 1){
-				if ( y3 < 13 ) {
+				if ( y3 < 14 ) {
 					y3++;
 					if ( EXmap[y3][x3] === 0 ) {
 						ec3.move = 64;
@@ -4908,7 +4949,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push4 === 1){
-				if ( y4 < 13 ) {
+				if ( y4 < 14 ) {
 					y4++;
 					if ( EXmap[y4][x4] === 0 ) {
 						ec4.move = 64;
@@ -4967,7 +5008,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push5 === 1){
-				if ( y5 < 13 ) {
+				if ( y5 < 14 ) {
 					y5++;
 					if ( EXmap[y5][x5] === 0 ) {
 						ec5.move = 64;
@@ -5026,7 +5067,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push6 === 1){
-				if ( y6 < 13 ) {
+				if ( y6 < 14 ) {
 					y6++;
 					if ( EXmap[y6][x6] === 0 ) {
 						ec6.move = 64;
@@ -5085,7 +5126,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push7 === 1){
-				if ( y7 < 13 ) {
+				if ( y7 < 14 ) {
 					y7++;
 					if ( EXmap[y7][x7] === 0 ) {
 						ec7.move = 64;
@@ -5144,7 +5185,7 @@ var ecEXMove = function(){
 			
 			//下
 			if ( randmove.push8 === 1){
-				if ( y8 < 13 ) {
+				if ( y8 < 14 ) {
 					y8++;
 					if ( EXmap[y8][x8] === 0 ) {
 						ec8.move = 64;
@@ -5192,7 +5233,7 @@ var ecEXMove = function(){
 
 			//上
 			if ( randmove.push9 === 0){
-				if ( y9 > 13) {
+				if ( y9 > 0) {
 					y9--;
 					if ( EXmap[y9][x9] === 0 ) {
 						ec9.move = 64;
@@ -5268,6 +5309,10 @@ var amimeEXMove = function(){
 						amime.move = 64;
 						key.push = 'up';
 					}
+					if ( EXmap[cpyu][cpxu] === 99 ) {
+						amime.move = 64;
+						key.push = 'up';
+					}
 				}
 			}
 
@@ -5275,13 +5320,17 @@ var amimeEXMove = function(){
 			if( key.down === true){
 				var cpxd = amime.x/64;
 				var cpyd = amime.y/64;
-				if ( cpyd < 13 ) {
+				if ( cpyd < 14 ) {
 					cpyd++;
 					if ( EXmap[cpyd][cpxd] === 0 ) {
 						amime.move = 64;
 						key.push = 'down';
 					}
 					if ( EXmap[cpyd][cpxd] === 2 ) {
+						amime.move = 64;
+						key.push = 'down';
+					}
+					if ( EXmap[cpyd][cpxd] === 99 ) {
 						amime.move = 64;
 						key.push = 'down';
 					}
@@ -5302,6 +5351,10 @@ var amimeEXMove = function(){
 					amime.move = 64;
 					key.push = 'right';
 				}
+				if ( EXmap[cpyr][cpxr] === 99 ) {
+					amime.move = 64;
+					key.push = 'right';
+				}
 			}
 			}
 
@@ -5316,6 +5369,10 @@ var amimeEXMove = function(){
 					key.push = 'left';
 				}
 				if ( EXmap[cpyl][cpxl] === 2 ) {
+					amime.move = 64;
+					key.push = 'left';
+				}
+				if ( EXmap[cpyl][cpxl] === 99 ) {
 					amime.move = 64;
 					key.push = 'left';
 				}
@@ -5336,7 +5393,7 @@ var amimeEXMove = function(){
 var amimeint = function(){
 	amime.move = 0;
 	amime.x = 640;
-	amime.y = 768;
+	amime.y = 832;
 }
 
 var EXgameclear = function(){
