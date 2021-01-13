@@ -5807,8 +5807,6 @@ if(key_code===120) {
 	ssgenerate =true;
 	EXstage = true;
 }
-if(key_code===121)EXclear = true;
-if(key_code===119)gamereset();
 
 if(key_code===87) randmove.keypush = true;
 if(key_code===38) randmove.keypush = true;
