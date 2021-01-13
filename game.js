@@ -48,9 +48,12 @@ var canvasUpdate = function(){
 	}
 	
 	if(EXclear===true){
-		document.body.style.backgroundColor = "rgb(255,255,255)";
+		color.r = 255;
+		color.g = 255;
+		color.b = 255;
+		document.body.style.backgroundColor = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
 		ctx.fillRect ( 0,0,1344,960);
-		ctx.fillStyle = "rgb(255,255,255)";
+		ctx.fillStyle = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
 	}
 
 }
@@ -479,11 +482,16 @@ var EXgotitle = new Image();
 EXgotitle.src = 'game-object/EXgotitle.PNG';
 var clearEX = new Image();
 clearEX.src = 'game-object/EXclear.PNG';
+var reset = new Image();
+reset.src = 'game-object/reset.PNG';
 
 
 var EXstageswich = function(){
 	if (EXstage === true){
 		ssmap[5][12] = 11;
+	}
+	if (EXclear === true){
+		ssmap[5][8] = 12;
 	}
 }
 
@@ -574,6 +582,7 @@ var ssMap = function(){
 				if ( ssmap[y][x] === 9 ) ctx.drawImage( EXss9, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 				if ( ssmap[y][x] === 10 ) ctx.drawImage( EXgotitle, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 				if ( ssmap[y][x] === 11 ) ctx.drawImage( clearEX, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
+				if ( ssmap[y][x] === 12 ) ctx.drawImage( reset, 0, 0, 64, 64, 64*x, 64*y, 64, 64 );
 			}
 			
 
@@ -636,6 +645,14 @@ var ppcssMove = function(){
 						ppc.move = 64;
 						key.push = 'up';
 					}
+					if ( ssmap[ssyu][ssxu] === 11 ) {
+						ppc.move = 64;
+						key.push = 'up';
+					}
+					if ( ssmap[ssyu][ssxu] === 12 ) {
+						ppc.move = 64;
+						key.push = 'up';
+					}
 					
 				}
 			}
@@ -689,6 +706,14 @@ var ppcssMove = function(){
 						key.push = 'down';
 					}
 					if ( ssmap[ssyd][ssxd] === 10 ) {
+						ppc.move = 64;
+						key.push = 'down';
+					}
+					if ( ssmap[ssyd][ssxd] === 11 ) {
+						ppc.move = 64;
+						key.push = 'down';
+					}
+					if ( ssmap[ssyd][ssxd] === 12 ) {
 						ppc.move = 64;
 						key.push = 'down';
 					}
@@ -749,6 +774,14 @@ var ppcssMove = function(){
 					ppc.move = 64;
 					key.push = 'right';
 				}
+				if ( ssmap[ssyr][ssxr] === 11 ) {
+					ppc.move = 64;
+					key.push = 'right';
+				}
+				if ( ssmap[ssyr][ssxr] === 12 ) {
+					ppc.move = 64;
+					key.push = 'right';
+				}
 				}
 			}
 
@@ -802,6 +835,14 @@ var ppcssMove = function(){
 					key.push = 'left';
 				}
 				if ( ssmap[ssyl][ssxl] === 10 ) {
+					ppc.move = 64;
+					key.push = 'left';
+				}
+				if ( ssmap[ssyl][ssxl] === 11 ) {
+					ppc.move = 64;
+					key.push = 'left';
+				}
+				if ( ssmap[ssyl][ssxl] === 12 ) {
 					ppc.move = 64;
 					key.push = 'left';
 				}
@@ -908,9 +949,97 @@ var ssStart = function(){
 				EXint();
 				idx = 5;
 			}
+			if(ssmap[ssj][ssi]===12){
+				gamereset();
+			}
+			
 
 		}
 }
+
+
+
+var gamereset = function(){
+	update = false;
+	lost.x = ppc.x-140;
+	lost.y = ppc.y+68;
+	ctx.drawImage( lost.img, lost.x, lost.y );
+	mapClear.s1 =false;
+	mapClear.s2 =false;
+	mapClear.s3 =false;
+	mapClear.s4 =false;
+	mapClear.s5 =false;
+	mapClear.s6 =false;
+	mapClear.s7 =false;
+	mapClear.s8 =false;
+	mapClear.s9 =false;
+	ssgenerate =false;
+	EXstage = false;
+	EXclear = false;
+	colorint();
+	infoint();
+	ppcint();
+	pcint();
+	amimeint();
+	ecint();
+	stageint();
+	EXint();
+	mapreset();
+	
+	
+
+				setTimeout(function(){
+					resetgamecolor();
+					idx = 0;
+					update = true;
+				},1500);
+}
+
+var mapreset = function(){
+	titlemap = [
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+	
+	ssmap = [
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+
+}
+
+var resetgamecolor = function(){
+color.r = 0;
+color.g = 0;
+color.b = 0;
+}
+
 
 
 
@@ -1816,6 +1945,12 @@ var reMap = function(){
 			map[11][18] =0;
 			map[11][19] =0;
 			map[1][10] =0;
+			ppcint();
+			pcint();
+			ecint();
+			ecenint();
+			colorint();
+			stageint();
 			idx = 0;
 		},1500);
 		}
@@ -4161,6 +4296,7 @@ var touchItem =  function(){
 
 //敵接触時
 var encountEc = function(){
+	if(EXclear === false){
 	if ( pc.x === ec1.x && pc.y === ec1.y ){
 		ec1.enc = true;
 		lost.x = ec1.x-140;
@@ -4206,10 +4342,12 @@ var encountEc = function(){
 		lost.x = ec9.x-140;
 		lost.y = ec9.y+68;
 		}else{ec9.enc = false;}
+	}
 }
 
 //敵接触判定
 var attackEc = function(){
+	if(EXclear === false){
 	if(ec1.enc === true && ec1.view === true){
 		stage.count -= 1;
 		update = false;
@@ -4272,6 +4410,7 @@ var attackEc = function(){
 		lostI();
 		pcint();
 		ecint();
+	}
 	}
 }
 
@@ -5410,6 +5549,7 @@ var EXgameclear = function(){
 }
 
 var EXgameover = function(){
+	if(EXclear === false){
 	if(ec1.x === amime.x && ec1.y === amime.y){
 		EXover = true;
 	}
@@ -5437,6 +5577,7 @@ var EXgameover = function(){
 	if(ec9.x === amime.x && ec9.y === amime.y){
 		EXover = true;
 	}
+	}
 }
 
 var EXupdate = function(){
@@ -5446,6 +5587,7 @@ var EXupdate = function(){
 		setTimeout(function(){
 			amimeint();
 			ecint();
+			ppcint();
 			idx = 0;
 			EXmapclear = false;
 			update = true;
@@ -5457,6 +5599,7 @@ var EXupdate = function(){
 		setTimeout(function(){
 			amimeint();
 			ecint();
+			ppcint();
 			idx = 0;
 			EXover = false;
 			colorint();
@@ -5566,6 +5709,7 @@ switch( idx ){
 		
 	//ステージセレクト
 	case 3:
+		if(update === true){
 		canvasUpdate();
 		ssmapGenerate();
 		EXstageswich();
@@ -5576,7 +5720,7 @@ switch( idx ){
 		addEventListener("keyup", botanhanasu );
 		ppcssMove();
 		ssStart();
-		
+		}
 		
 		
 	break;
@@ -5663,7 +5807,8 @@ if(key_code===120) {
 	ssgenerate =true;
 	EXstage = true;
 }
-
+if(key_code===121)EXclear = true;
+if(key_code===119)gamereset();
 
 if(key_code===87) randmove.keypush = true;
 if(key_code===38) randmove.keypush = true;
