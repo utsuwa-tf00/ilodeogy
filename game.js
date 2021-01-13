@@ -483,7 +483,7 @@ clearEX.src = 'game-object/EXclear.PNG';
 
 var EXstageswich = function(){
 	if (EXstage === true){
-		ssmap[5][13] = 11;
+		ssmap[5][12] = 11;
 	}
 }
 
@@ -5650,6 +5650,19 @@ if(key_code===37) pc.draw ='left';
 if(key_code===9) pause =true;
 if(key_code===27) titleBack =true;
 if(key_code===82) Rkey=true;
+if(key_code===120) {
+	mapClear.s1 =true;
+	mapClear.s2 =true;
+	mapClear.s3 =true;
+	mapClear.s4 =true;
+	mapClear.s5 =true;
+	mapClear.s6 =true;
+	mapClear.s7 =true;
+	mapClear.s8 =true;
+	mapClear.s9 =true;
+	ssgenerate =true;
+	EXstage = true;
+}
 
 
 if(key_code===87) randmove.keypush = true;
