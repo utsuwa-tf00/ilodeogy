@@ -14,6 +14,64 @@ var  no_scroll = function() {
 }
 no_scroll();
 
+//スワイプ感知/内容設定
+function setSwipe(elem) {
+    var t = document.querySelector(elem);
+    var startX;        // タッチ開始 x座標
+    var startY;        // タッチ開始 y座標
+    var moveX;    // スワイプ中の x座標
+    var moveY;    // スワイプ中の y座標
+     
+    // タッチ開始時： xy座標を取得
+    t.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        startX = e.touches[0].pageX;
+        startY = e.touches[0].pageY;
+    });
+     
+    // スワイプ中： xy座標を取得
+    t.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+        moveX = e.changedTouches[0].pageX;
+        moveY = e.changedTouches[0].pageY;
+    });
+     
+    // タッチ終了時： スワイプした距離から左右どちらにスワイプしたかを判定する
+    t.addEventListener("touchend", function(e) {
+        if (startX > moveX && startX > moveX) {        // 右から左にスワイプ
+            // 右から左にスワイプした時の処理
+			key.left =true;
+			key.drawimage =true;
+			pc.draw ='left';
+			randmove.keypush = true;
+        }
+        if (startX < moveX && startX < moveX) {    // 左から右にスワイプ
+            // 左から右にスワイプした時の処理
+			key.right =true;
+			key.drawimage =true;
+			pc.draw ='right';
+			randmove.keypush = true;
+        }
+		if (startY > moveY && startY > moveY) {        // 下から上にスワイプ
+            // 下から上にスワイプした時の処理
+			key.up =true;
+			key.drawimage =true;
+			pc.draw ='up';
+			randmove.keypush = true;
+        }
+        if (startY < moveY && startY < moveY) {    // 上から下にスワイプ
+            // 下から上にスワイプした時の処理
+			key.down =true;
+			key.drawimage =true;
+			pc.draw ='down';
+			randmove.keypush = true;
+        }
+    });
+}
+
+
+
+
 
 
 
